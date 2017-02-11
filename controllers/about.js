@@ -6,8 +6,7 @@ const about = {
   index(request, response) {
     logger.info('about rendering');
     const viewData = {
-      title: 'About Gomark 1',
-      contact: ' Developed by GoMark Associates, WIT, Waterford.'
+      title: 'About Playlist 1',
     };
     response.render('about', viewData);
   },
