@@ -1,32 +1,9 @@
-{{> menu}}
+{{> menu id="dashboard"}}
 
-<section class="ui segment">
+<section class="ui center aligned middle aligned segment">
   <h2 class="ui header">
     {{bookmarklist.title}}
   </h2>
-  <table class="ui fixed table">
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Link</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    {{#each bookmarklist.bookmarks}}
-      <tr>
-        <td>
-          {{title}}
-        </td>
-        <td>
-          <a href="{{link}}"> {{link}}</a>
-        </td>
-        <td>
-          <a href="/bookmarklist/{{../bookmarklist.id}}/deletebookmark/{{id}}" class="ui tiny red button">Delete Bookmark</a>
-        </td>
-      </tr>
-    {{/each}}
-    </tbody>
-  </table>
+  {{> listbookmarks}}
+  {{> addbookmark}}
 </section>
-
