@@ -1,13 +1,13 @@
 'use strict';
 
 const logger = require('../utils/logger');
-const bookmarklistStore = require('../models/bookmarklist-store.js');
+const bookmarklistStore = require('../models/bookmarklist-store');
 
 const start = {
   index(request, response) {
     logger.info('start rendering');
 
-    const bookmarkCollections = bookmarklistStore.getBookmarkListCollection();
+    const bookmarkCollections = bookmarklistStore.getBookmarklistCollection();
     let totalBookmarks = 0;
     for (let i = 0; i < bookmarkCollections.length; i++) {
       totalBookmarks = totalBookmarks + bookmarkCollections[i].bookmarks.length;
