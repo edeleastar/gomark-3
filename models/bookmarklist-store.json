@@ -29,16 +29,6 @@
           "id": "07",
           "title": "W3C Learn CSS",
           "link": "https://www.w3.org/Style/CSS/learning"
-        },
-        {
-          "id": "08",
-          "title": "Flexbox",
-          "link": "https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
-        },
-        {
-          "id": "09",
-          "title": "Grid",
-          "link": "https://css-tricks.com/snippets/css/complete-guide-grid/"
         }
       ]
     },
@@ -62,6 +52,11 @@
           "link": "http://javascriptweekly.com/issues"
         }
       ]
+    },
+    {
+      "id": "ede9bf66-4fa6-47c2-b31e-b4e70544c025",
+      "title": "asdvsdv",
+      "bookmarks": []
     }
   ]
 }

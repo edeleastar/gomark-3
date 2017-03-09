@@ -1,25 +1,53 @@
 'use strict';
 
 const _ = require('lodash');
-
-const bookmarklistCollection = require('./bookmarklist-store.json').bookmarklistCollection;
+const JsonStore = require('./json-store');
 
 const bookmarklistStore = {
 
-  bookmarklistCollection: require('./bookmarklist-store.json').bookmarklistCollection,
+  store: new JsonStore('./models/bookmarklist-store.json', { bookmarklistCollection: [] }),
+  collection: 'bookmarklistCollection',
 
-  getBookmarkListCollection() {
-    return this.bookmarklistCollection;
+  getBookmarklistCollection() {
+    return this.store.findAll(this.collection);
   },
 
   getBookmarklist(id) {
-    return _.find(this.bookmarklistCollection, { id: id });
+    return this.store.findOneBy(this.collection, { id: id });
+  },
+
+  addBookmarklist(bookmark) {
+    this.store.add(this.collection, bookmark);
+  },
+
+  removeBookmarklist(id) {
+    const bookmark = this.getBookmarklist(id);
+    this.store.remove(this.collection, bookmark);
+  },
+
+  removeAllBookmarklists() {
+    this.store.removeAll(this.collection);
+  },
+
+  addBookmark(id, bookmark) {
+    const bookmarklist = this.getBookmarklist(id);
+    bookmarklist.bookmarks.push(bookmark);
   },
 
   removeBookmark(id, bookmarkId) {
     const bookmarklist = this.getBookmarklist(id);
-    _.remove(bookmarklist.bookmarks, { id: bookmarkId });
+    const bookmarks = bookmarklist.bookmarks;
+    _.remove(bookmarks, { id: bookmarkId});
   },
+
+  getTotalNumberOfBookmarks() {
+    const collection = this.getBookmarklistCollection();
+    let total = 0;
+    for (let i=0; i<collection.length; i++) {
+      total = total + collection[i].bookmarks.length;
+    }
+    return total;
+  }
 };
 
 module.exports = bookmarklistStore;
